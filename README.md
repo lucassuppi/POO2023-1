@@ -1,2 +1,2 @@
 # POO2023-1
-Programação orientada a objetos.
+Object oriented programming | Programação orientada a objetos

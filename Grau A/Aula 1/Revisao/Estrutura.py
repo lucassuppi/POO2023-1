@@ -69,7 +69,7 @@ def ExecutarAcao3():
         sleep(2)
         for i in range(len(playlist_musicas)):
             print(f'{i+1}. {playlist_musicas[i][0]} - {playlist_musicas[i][1]} - {playlist_musicas[i][4]}')
-        input('Precione enter para continuar...')
+        input('Pressione enter para continuar...')
 
     else:
         print("Você precisa montar uma playlist primeiro!\n")

@@ -43,4 +43,5 @@ while not vencedor: #vencedor
     print('|-|-|-|-|-|-|-|-|-|-|')
 
 print('O vencedor da corrida é...')
+sleep(2)
 print(f'{vencedor}!')

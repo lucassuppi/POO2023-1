@@ -3,22 +3,22 @@ import random
 class Competidor:
     def __init__(self, nome):
         self.nome = nome
-        self.pos = 0
+        self.posicao = 0
 
     def atualizar(self):
         dado = random.randint(1, 6)
-        self.pos += dado
-        if self.pos % 5 == 0:
-            self.pos -= 1
-        elif self.pos == 7 or self.pos == 17:
-            self.pos += 2
-        elif self.pos == 13:
-            self.pos = 0
-        elif self.pos > 20:
-            self.pos = 20
+        self.posicao += dado
+        if self.posicao % 5 == 0:
+            self.posicao -= 1
+        elif self.posicao == 7 or self.posicao == 17:
+            self.posicao += 2
+        elif self.posicao == 13:
+            self.posicao = 0
+        elif self.posicao > 20:
+            self.posicao = 20
 
     def getPos(self):
-        return self.pos
+        return self.posicao
 
 print('Corrida Maluca 😵')
 input('Pressione enter para começar')
@@ -39,6 +39,6 @@ while not vencedor:
             break
     for i in competidores:
         print(f'{i.nome}: {i.getPos()}')
-    print('-------------------')
+    print('|-|-|-|-|-|-|-|-|-|-|')
 
 print(f'O vencedor da corrida é {vencedor}!')

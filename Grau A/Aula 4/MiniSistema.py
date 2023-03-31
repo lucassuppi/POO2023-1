@@ -1,13 +1,14 @@
 import os
+
 os.system('cls') or None
 
 class CadastroCliente():
-    def __init__(self, nome, sobrenome, nascimento, email, CPF, senha):
+    def __init__(self, nome, sobrenome, nascimento, email, cpf, senha):
         self.nome = nome
         self.sobrenome = sobrenome
         self.nascimento = nascimento
         self.email = email
-        self.CPF = CPF
+        self.cpf = cpf
         self.senha = senha
         self.tentativas = 0
 
@@ -15,9 +16,21 @@ class CadastroCliente():
         print('Cadastro de cliente')
         self.nome = input('Digite seu nome: ')
         self.sobrenome = input('Digite seu sobrenome: ')
-        self.nascimento = input('Digite a data do seu nascimento: ')
-        self.CPF = input('Digite seu CPF: ')
-        self.email = input('Digite seu email: ')
+        self.nascimento = input('Digite a data do seu nascimento (DD/MM/AAAA): ')
+        while True:
+            self.cpf = input('Digite seu CPF (somente números): ')
+            if len(self.cpf) != 11:
+                print('CPF inválido. Por favor, tente novamente.')
+                continue
+            else:
+                break
+        while True:
+            self.email = input('Digite seu email: ')
+            if '@' not in self.email or '.' not in self.email:
+                print('Email inválido. Por favor, tente novamente.')
+                continue
+            else:
+                break
         self.senha = input('Digite sua senha: ')
         os.system('cls') or None
         print('Dados salvos com sucesso.')
@@ -38,7 +51,7 @@ class CadastroCliente():
         else:
             os.system('cls') or None
             print('Logado com sucesso')
-            print(f'Nome: {self.nome} {self.sobrenome}\nData de nascimento: {self.nascimento}\nCPF: {self.CPF}')
+            print(f'Nome: {self.nome} {self.sobrenome}\nData de nascimento: {self.nascimento}\nCPF: {self.cpf}')
             input('Pressione enter para continuar.')
 
 opcao = 0

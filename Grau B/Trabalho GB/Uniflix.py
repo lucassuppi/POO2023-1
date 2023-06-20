@@ -1,3 +1,6 @@
+# Integrantes do Grupo:
+# Lucas Suppi Bernardo, Eduardo Moreira Battistello, Henrique Schuch Batalha Boeira
+
 import csv
 
 class Midia:

@@ -83,6 +83,19 @@ def salvar_perfis():
             for perfil in usuario.perfis:
                 escritor.writerow([usuario.nome, perfil.nome, perfil.idade])
 
+def salvar_midias():
+    with open('perfis.csv', 'w', newline='') as arquivo:
+        escritor = csv.writer(arquivo)
+        for usuario in usuarios:
+            for perfil in usuario.perfis:
+                escritor.writerow([usuario.nome, perfil.nome, perfil.idade, perfil.midias_favoritas])
+
+def salvar_usuarios():
+    with open('usuarios.csv', 'w', newline='') as arquivo:
+        escritor = csv.writer(arquivo)
+        for usuario in usuarios:
+            escritor.writerow([usuario.nome, usuario.senha, usuario.tipo_assinatura])
+
 def listar_midias_catalogo(catalogo):
     print("\nMídias do Catálogo:")
     for i, midia in enumerate(catalogo, start=1):
@@ -108,10 +121,14 @@ def menu_perfil(usuario, perfil, catalogo):
     print("4. Listar últimas mídias assistidas")
     print("5. Buscar mídia por título")
     print("6. Listar mídias disponíveis")
-    print("7. Voltar ao menu do usuário")
+    print("7. Listar mídias favoritas")
+    print("8. Voltar ao menu do usuário")
 
     opcao = input("\nDigite o número da opção desejada: ")
     if opcao == '1':
+     if len(perfil.midias_favoritas) > 10:
+      print('Você já possuí 10 midias favoritas')
+     else:
         listar_midias_catalogo(catalogo)
         numero_midia = input("Digite o número da mídia que deseja adicionar aos favoritos: ")
         if numero_midia.isdigit():
@@ -192,6 +209,15 @@ def menu_perfil(usuario, perfil, catalogo):
         listar_midias_catalogo(catalogo)
 
     elif opcao == '7':
+        print("\nMídias do Favoritas:")
+        for i, midia in enumerate(perfil.midias_favoritas, start=1):
+                print(f"{i}. Tipo: {midia.tipo}")
+                print(f"   Nome: {midia.nome}")
+                print(f"   Ano: {midia.ano}")
+                print(f"   Classificação: {midia.classificacao}")
+                print("--------------------")
+
+    elif opcao == '8':
         menu_usuario(usuario)
 
     else:
@@ -314,6 +340,7 @@ def menu_principal():
     elif opcao == '3':
         print("\nSaindo...")
         salvar_perfis()
+        salvar_usuarios()
         exit()
 
     else:
